@@ -1,15 +1,36 @@
-const Start = Date.now()
-
-function someFn(){
-    console.log('time:', Date.now()-Start)
-    console.log('arg:', arguments)
-}
-Function.prototype.delay= function (ms){
-    return (...arg)=>{
-        setTimeout(()=>{
-            this.apply(this,arg)
-        },ms)
+const tree = [
+    {
+        v: 5,
+        c: [
+            {
+                v: 8,
+                c: [
+                    {v: 9}
+                ]
+            },
+            {
+                v: 8,
+                c: [
+                    {
+                        v: 4
+                    }
+                ]
+            }
+        ]
     }
+]
+
+function some(arr) {
+    let res = 0
+    for (let i = 0; i < arr.length; i++) {
+        res += arr[i].v
+        if(!arr[i].c){
+            return arr[i].v
+        } else {
+           res +=  some(arr[i].c)
+        }
+    }
+return res
 }
 
 
