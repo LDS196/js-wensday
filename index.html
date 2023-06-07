@@ -5,51 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>lesson_3</title>
-    <style>
-        body {
-            background-color: aliceblue;
-        }
-        #big {
-            background-color: rgb(74, 36, 109);
-            border: 2px solid blue;
-            border-radius: 5px;
-            margin: 50px auto;
-            width: 300px;
-            height: 300px;
-        }
-        #medium {
-            background-color: rgb(134, 82, 184);
-            border: 2px solid blue;
-            border-radius: 5px;
-            margin: 50px auto;
-            width: 200px;
-            height: 200px;
-        }
-        #small {
-            background-color: rgb(193, 162, 223);
-            border: 2px solid blue;
-            border-radius: 5px;
-            margin: 50px auto;
-            width: 100px;
-            height: 100px;
-        }
-        #img {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
-    
 </head>
 <body>
-    <div id="big">
-        <div id="medium">
-            <div id="small">
-               
-            </div>
-        </div>
-    </div>
-    <a href="https://learn.javascript.ru/document" id="a">Google</a>
 
-    <script src="main-07.js"></script>
+
+<form >
+    <button id="button" >Submit</button>
+</form>
+<div id="div"></div>
+<script src="https://www.google.com/recaptcha/api.js?renser=explicit&onload=onload"></script>
+
+<script>
+    // const myKey='6LdzgDMmAAAAAG4SEBn6-getzoNB0GxzCdEtuhj2'
+    document.getElementById('button').addEventListener('click',(e)=>{
+        e.preventDefault()
+        // grecaptcha.ready(function() {
+        //     grecaptcha.execute('6LeY2y0mAAAAAN8bWU4ElOZIEnRAqugcHy0PGOpO', {action: 'submit'}).then(function(token) {
+        //         console.log(token)
+        //     });
+        // });
+
+    })
+    function onload(){
+        grecaptcha.render('div', {
+            'sitekey' : '6LeY2y0mAAAAANwI_paCWfoksCgBm1n2z9J0nwNQ'
+        });
+    }
+
+</script>
+
+
+
+
+
+    <script src="main.js"></script>
+<!--    <script src="reGex.js"></script>-->
 </body>
 </html>
