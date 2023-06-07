@@ -1,15 +1,15 @@
-const arr = [6.5, 5.6, 5.7, 6.1]
+const Start = Date.now()
 
-
-function groupBy(arr, callback) {
-    let res = {}
-    arr.forEach(item => {
-        const elAfterCallback = callback(item)
-        res[elAfterCallback]
-            ? res[elAfterCallback].push(item)
-            : res[elAfterCallback] = [item]
-    })
-    return res
+function someFn(){
+    console.log('time:', Date.now()-Start)
+    console.log('arg:', arguments)
+}
+Function.prototype.delay= function (ms){
+    return (...arg)=>{
+        setTimeout(()=>{
+            this.apply(this,arg)
+        },ms)
+    }
 }
 
-console.log(groupBy(arr,Math.floor))
+
