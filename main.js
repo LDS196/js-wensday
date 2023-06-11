@@ -1,25 +1,18 @@
-const str = 'abcdAw'
-function isUnique(string) {
-    for (let i = 0; i < string.length; i++) {
-        const char = string[i]
-        if(string.lastIndexOf(char)!== i){
-            return false
+const myArr = [[1], [[2, 3]], [[[4]]]]
+
+function flatten(array) {
+  const res = []
+    for (let i = 0; i < array.length; i++) {
+        if (Array.isArray(array[i])) {
+            const flat = flatten(array[i])
+            for (let j = 0; j <flat.length ; j++) {
+                res.push(flat[j])
+            }
+        } else {
+           res.push(array[i])
         }
     }
-    return true
+    return res
 }
-// function isUnique(string) {
-//     const mySet = new Set()
-//     for (const char of string) {
-//         if(mySet.has(char)){
-//             return false
-//
-//         } else{
-//             mySet.add(char)
-//         }
-//     }
-//     return true
-// }
-//
-// console.log(isUnique(str))
-// console.log('a'==='A')
+
+console.log(flatten(myArr))
