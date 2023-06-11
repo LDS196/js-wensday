@@ -1,36 +1,25 @@
-const tree = [
-    {
-        v: 5,
-        c: [
-            {
-                v: 8,
-                c: [
-                    {v: 9}
-                ]
-            },
-            {
-                v: 8,
-                c: [
-                    {
-                        v: 4
-                    }
-                ]
-            }
-        ]
-    }
-]
-
-function some(arr) {
-    let res = 0
-    for (let i = 0; i < arr.length; i++) {
-        res += arr[i].v
-        if(!arr[i].c){
-            return arr[i].v
-        } else {
-           res +=  some(arr[i].c)
+const str = 'abcdAw'
+function isUnique(string) {
+    for (let i = 0; i < string.length; i++) {
+        const char = string[i]
+        if(string.lastIndexOf(char)!== i){
+            return false
         }
     }
-return res
+    return true
 }
-
-
+// function isUnique(string) {
+//     const mySet = new Set()
+//     for (const char of string) {
+//         if(mySet.has(char)){
+//             return false
+//
+//         } else{
+//             mySet.add(char)
+//         }
+//     }
+//     return true
+// }
+//
+// console.log(isUnique(str))
+// console.log('a'==='A')
