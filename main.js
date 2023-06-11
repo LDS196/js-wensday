@@ -1,18 +1,21 @@
-const myArr = [[1], [[2, 3]], [[[4]]]]
-
-function flatten(array) {
-  const res = []
-    for (let i = 0; i < array.length; i++) {
-        if (Array.isArray(array[i])) {
-            const flat = flatten(array[i])
-            for (let j = 0; j <flat.length ; j++) {
-                res.push(flat[j])
-            }
-        } else {
-           res.push(array[i])
+function removeDupes(str) {
+    const chars = {}
+    const res = []
+    for (let i = 0; i < str.length; i++) {
+        if (!chars[str[i]]) {
+            chars[str[i]] = true
+            res.push(str[i])
         }
     }
-    return res
+    return res.join('')
 }
 
-console.log(flatten(myArr))
+
+console.log(removeDupes('abcd')) // -> 'abcd'
+console.log(removeDupes('aabbccdd')) // -> 'abcd'
+console.log(removeDupes('abcddbca')) // -> 'abcd'
+console.log(removeDupes('abababcdcdcd')) // -> 'abcd'
+
+
+
+console.log(d['a'])
