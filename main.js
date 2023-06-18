@@ -1,21 +1,24 @@
-function removeDupes(str) {
-    const chars = {}
-    const res = []
-    for (let i = 0; i < str.length; i++) {
-        if (!chars[str[i]]) {
-            chars[str[i]] = true
-            res.push(str[i])
+function highestFrequency(array) {
+    let res = {}
+    let maxTempCount = 0
+    let maxTempStr =array[0]
+    for (let i = 0; i < array.length; i++) {
+        const current = array[i]
+        if (res.hasOwnProperty(current)) {
+            res[current] = res[current] + 1
+        } else {
+            res[current] = 1
+        }
+        if(res[current]> maxTempCount){
+            maxTempCount = res[current]
+            maxTempStr = current
         }
     }
-    return res.join('')
+
+    return maxTempStr
 }
 
-
-console.log(removeDupes('abcd')) // -> 'abcd'
-console.log(removeDupes('aabbccdd')) // -> 'abcd'
-console.log(removeDupes('abcddbca')) // -> 'abcd'
-console.log(removeDupes('abababcdcdcd')) // -> 'abcd'
-
-
-
-console.log(d['a'])
+console.log(highestFrequency(['a', 'b', 'c', 'c', 'd', 'e'])) // -> c
+console.log(highestFrequency(['abc', 'def', 'abc', 'def', 'abc'])) // -> abc
+console.log(highestFrequency(['abc', 'def'])) // -> abc
+console.log(highestFrequency(['abc', 'abc', 'def', 'def', 'def', 'ghi', 'ghi', 'ghi', 'ghi'])) // -> ghi
