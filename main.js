@@ -1,24 +1,16 @@
-function highestFrequency(array) {
-    let res = {}
-    let maxTempCount = 0
-    let maxTempStr =array[0]
-    for (let i = 0; i < array.length; i++) {
-        const current = array[i]
-        if (res.hasOwnProperty(current)) {
-            res[current] = res[current] + 1
-        } else {
-            res[current] = 1
-        }
-        if(res[current]> maxTempCount){
-            maxTempCount = res[current]
-            maxTempStr = current
-        }
+function isStringRotated(source, test) {
+  if(source.length!== test.length){
+    return false
+  }
+  for (let i = 0; i < source.length; i++) {
+const rotate = source.slice(i,source.length) + source.slice(0,i)
+    if(rotate=== test){
+      return true
     }
-
-    return maxTempStr
+  }
+  return false
 }
 
-console.log(highestFrequency(['a', 'b', 'c', 'c', 'd', 'e'])) // -> c
-console.log(highestFrequency(['abc', 'def', 'abc', 'def', 'abc'])) // -> abc
-console.log(highestFrequency(['abc', 'def'])) // -> abc
-console.log(highestFrequency(['abc', 'abc', 'def', 'def', 'def', 'ghi', 'ghi', 'ghi', 'ghi'])) // -> ghi
+console.log(isStringRotated('javascript', 'scriptjava')) // -> true
+console.log(isStringRotated('javascript', 'iptjavascr')) // -> true
+console.log(isStringRotated('javascript', 'java')) // -> false
