@@ -1,19 +1,19 @@
-function arraySubset(source, subset) {
-if(source.length < subset.length){
-  return false
-}
-  for (let i = 0; i <subset.length ; i++) {
-   const index = source.indexOf(subset[i])
 
-    if (index===-1){
-      return false
+const matrix = [
+    [ 6, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+function rotate(source) {
+    const res = source[0].map(()=>[])
+
+    for (let i = 0; i <matrix.length ; i++) {
+        for (let j = 0; j < matrix[i].length; j++) {
+            res[matrix.length-1-i][matrix.length-1-j] = source[i][j]
+        }
     }
-    delete source[index]
-  }
-  return true
+    return res
 }
 
-console.log(arraySubset([2, 1, 3], [1, 2, 3])) // -> true
-console.log(arraySubset([2, 1, 1, 3], [1, 2, 3])) // -> true
-console.log(arraySubset([1, 1, 1, 3], [1, 3, 3])) // -> false
-console.log(arraySubset([1, 2], [1, 2, 3])) // -> false
+
