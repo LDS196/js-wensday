@@ -1,4 +1,7 @@
-function isPalindrome(str){
-return str ===str.splice('').reverse().join('')
+function findShort(str){
+     return str.split(' ').sort((a,b)=> a.length-b.length)[0]
+
 }
+
+
 
