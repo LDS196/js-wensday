@@ -1,21 +1,15 @@
-let words = ['banana','grapefruit','banana','grapefruit','banana', 'orange', 'banana']
+ function getCurrentDateTime() {
+    const now = new Date()
+    const day = String(now.getDate()).padStart(2, "0")
+     console.log(now.getDate())
+    const month = String(now.getMonth() + 1).padStart(2, "0")
+     console.log(String(now.getMonth() + 1).padStart(2, "0"))
+    const year = now.getFullYear()
+    const hours = String(now.getHours()).padStart(2, "0")
+    const minutes = String(now.getMinutes()).padStart(2, "0")
+    const seconds = String(now.getSeconds()).padStart(2, "0")
 
-function mySort(arr){
-    const obj={}
-    for (let i = 0; i < arr.length; i++) {
-        const key = arr[i]
-        if(obj.hasOwnProperty(key)){
-            obj[key]=obj[key] + 1
-        } else{
-            obj[key]=1
-        }
-    }
-    let res=[]
-    for (const objElement in obj) {
-        res.push({name:objElement,count:obj[objElement]})
-
-    }
-
-    return res.sort((a,b)=> b.count-a.count).map(el=> el.name)
+    const formattedDateTime = `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`
+    return formattedDateTime
 }
-
+getCurrentDateTime()
