@@ -1,18 +1,10 @@
-function anagrams(word, words) {
-    let res = []
-    for (let i = 0; i < words.length; i++) {
-        const example = words[i]
-        if ( word.length === example.length) {
-            if (word.split('').sort().join(' ') === example.split('').sort().join(' ')){
-                res.push(example)
-            }
-        }
-    }
-    return res
+const moveZeros = function (arr) {
+    return [
+        ...(arr.filter(n => n !== 0)),
+        ...(arr.filter(n => n === 0))
+    ];
 }
-
-// anagrams('abba', ['aabb', 'abcd', 'bbaa', 'dada']) => ['aabb', 'bbaa']
-//
-// anagrams('racer', ['crazer', 'carer', 'racar', 'caers', 'racer']) => ['carer', 'racer']
-//
-// anagrams('laser', ['lazing', 'lazy',  'lacer']) => []
+// function moveZeros(arr) {
+//     return arr.sort((a, b) => b === 0 ? -1 : 0);
+// }
+// moveZeros([false,1,0,1,2,0,1,3,"a"]) // returns[false,1,1,2,1,3,"a",0,0]
