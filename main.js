@@ -1,22 +1,15 @@
-function pigIt(str){
-
-    return str
-        .split(' ')
-        .map(el=>{
-        if(isSpecialCharacter(el)) return el
-        else {
-            return el.slice(1,el.length) + el.slice(0,1) + 'ay'
-        }
-    })
-        .join(' ')
+function componentToHex(c) {
+    let x= c
+    if(x>255)x=255
+    if(x<0)x=0
+    const hex = x.toString(16).toUpperCase();
+    return hex.length === 1 ? "0" + hex : hex;
 }
 
-function isSpecialCharacter(char) {
-    // Регулярное выражение для проверки, является ли символ специальным
-    const specialCharacterRegex = /[^\w\s]/;
-
-    return specialCharacterRegex.test(char);
+function rgb(r, g, b) {
+    return componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
-
-// pigIt('Pig latin is cool'); // igPay atinlay siay oolcay
-// pigIt('Hello world !');     // elloHay orldway !
+// 255, 255, 255 --> "FFFFFF"
+// 255, 255, 300 --> "FFFFFF"
+// 0, 0, 0       --> "000000"
+// 148, 0, 211   --> "9400D3"
