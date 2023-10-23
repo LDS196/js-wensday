@@ -1,13 +1,26 @@
-function sum(...args) {
-    function add(...nextArgs) {
-        if (nextArgs.length === 0) {
-            return args.reduce((acc, val) => acc + val, 0);
-        }
-        return sum(...args, ...nextArgs);
+const processOrder = (warehouse, ids, amounts) => {
+    const list = [];
+
+    for(let i = 0; i < ids.length; i++)
+    {
+        const id = ids[i];
+        const amount = amounts[i];
+
+        warehouseService.getAvailableAmount(warehouse, id).then((availableItemAmount) => {
+            if (availableItemAmount >= amount) {
+
+                warehouseService.reserve(warehouse, id, amount).then(()=>{
+                    list.push("Item " + id + " (amount: " + amount + ") reserved");
+                })
+
+            }
+        });
     }
-    return add;
+    return list;
 }
 
-console.log(sum(1)(2)( 4)()); // Выводит 10
+const adapter = (warehouse, ids, amounts) => {
+    return [warehouse, ids, amounts];
+}
 
 
