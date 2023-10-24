@@ -1,45 +1,22 @@
-class Categories {
-    constructor() {
-        this.categoryData = categoryData
-    }
+async function calc() {
+    try {
+        const [field1Value, field2Value] = await Promise.all([get_field1(), get_field2()]);
 
-    getChildren(categoryId) {
-        return this.categoryData
-            .filter(category => category.parent === categoryId)
-            .map(c => c.id)
-            .sort((a, b) => a - b)
-    }
+        const field3Value = await get_field3();
 
-    getParent(categoryChildId) {
-        const category = this.categoryData.find(c => c.id === categoryChildId)
-        return category ? category.parent : undefined
-    }
+        let field4Value = 0;
+        const field5Value = await get_field5();
 
-    getPath(categoryChildId) {
-
-        let path = []
-        for (let i = 0; i < this.categoryData.length; i++) {
-            if (this.categoryData[i].id <= categoryChildId) {
-                path.push(this.categoryData[i].id)
-            } else {
-                break
-            }
+        if (field5Value > 1) {
+            field4Value = await get_field4();
         }
-        return path
+
+        const result = (field1Value * field2Value) % field3Value + field4Value / field5Value;
+
+        return result;
+    } catch (error) {
+        console.error("An error occurred:", error);
+        throw error; // Optionally rethrow the error if needed
     }
 }
-
-const categoryData = [
-    {id: 1},
-    {id: 2, parent: 1},
-    {id: 3, parent: 2},
-    {id: 4, parent: 3},
-    {id: 5, parent: 3}
-];
-
-const categoryTree = new Categories(categoryData);
-
-console.log("Children of category 3:", categoryTree.getChildren(3)); // [4, 5]
-console.log("Parent of category 2:", categoryTree.getParent(2)); // 1
-console.log("Path to category 4:", categoryTree.getPath(4)); // [1, 2, 3, 4]
 
