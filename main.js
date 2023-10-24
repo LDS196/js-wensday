@@ -1,22 +1,16 @@
-async function calc() {
-    try {
-        const [field1Value, field2Value] = await Promise.all([get_field1(), get_field2()]);
+function findMax(arr, num) {
+    let max = -Infinity; // Начальное значение максимального числа, выбрано как отрицательная бесконечность
 
-        const field3Value = await get_field3();
-
-        let field4Value = 0;
-        const field5Value = await get_field5();
-
-        if (field5Value > 1) {
-            field4Value = await get_field4();
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] < num && arr[i] > max) {
+            max = arr[i];
         }
-
-        const result = (field1Value * field2Value) % field3Value + field4Value / field5Value;
-
-        return result;
-    } catch (error) {
-        console.error("An error occurred:", error);
-        throw error; // Optionally rethrow the error if needed
     }
+
+    return max !== -Infinity ? max : null; // Возвращаем максимальное число или null, если подходящего числа не найдено
 }
+
+const result = findMax([1, 5, 3, 5, 6, 150, 33], 35);
+console.log(result); // Выведет 33
+
 
