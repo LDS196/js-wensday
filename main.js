@@ -1,32 +1,29 @@
-const tank = [
-    {id: 1, type: 'mango', price: 35},
-    {id: 2, type: 'mango', price: 77},
-    {id: 3, type: 'potato', price: 84},
-    {id: 4, type: 'potato', price: 25},
-    {id: 5, type: 'mango', price: 33},
-    {id: 6, type: 'apple', price: 50},
-    {id: 7, type: 'mango', price: 89},
-    {id: 8, type: 'apple', price: 60},
-    {id: 9, type: 'mango', price: 51},
-    {id: 10, type: 'apple', price: 82},
-];
-// Задача 1: Написать функцию, создающую
-// новый массив из исходного. В новом массиве должны быть удалены
-// удалены все объекты с type: 'mango', а для 'apple' цены (значение поля price) умножены на 3.
-function getModifiedArray(arr, deletedType, ModifiedType, number) {
-    let res = []
-    arr.forEach(item=>{
-        if (item.type !== deletedType) {
-            if (item.type === ModifiedType) {
-                const copyItem ={...item}
-                copyItem.price = copyItem.price * number
-                res.push(copyItem)
-            } else {
-                res.push(item)
-            }
-        }
-    })
-    return res
+function filter(list) {
+return list.filter(item=> Number.isInteger(item))
+}
+const inputList = [1, "apple", 3, "banana", 5, -2, "cherry"];
+// 2. Напишите функцию accum:
+//     accum("abcd") -> "A-Bb-Ccc-Dddd"
+// accum("RqaEzty") -> "R-Qq-Aaa-Eeee-Zzzzz-Tttttt-Yyyyyyy"
+// accum("cwAt") -> "C-Ww-Aaa-Tttt"
+function accum(str) {
+    return str
+        .split('')
+        .map((item,index)=>(item.toUpperCase() + item.toLowerCase().repeat(index)))
+        .join('-')
 }
 
-console.log(getModifiedArray(tank,'mango','apple',3),tank)
+console.log(accum('RqaEzty'))
+// 3. Напишите функцию, которая выдаёт сумму выручку на основании входного формата данных
+const products = [
+    { name: 'Футболка', price: 20, quantity: 2 },
+    { name: 'Джинсы', price: 50, quantity: 1 },
+    { name: 'Носки', price: 5, quantity: 10 },
+    { name: 'Штаны', price: 30, quantity: 1 }
+];
+
+function calculateSum(list){
+    return list.reduce((acc,item)=> acc + item.price * item.quantity,0)
+}
+
+console.log(calculateSum(products))
